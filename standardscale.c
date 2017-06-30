@@ -1,3 +1,6 @@
+#include <math.h>
+#include "standardscale.h"
+
 //mean_i = 1/i * (sum(1, x, n))
 
 //assign_means(&empty, k, &(data[floor]), ceiling)
@@ -27,9 +30,8 @@ void	incremental_variance()
 	return(variance);
 }
 
-//based on pseudocode form wikipedia. Use if my stuff doesn't work
-//actually this is better I think.
-online_variance(double *data, size_t datasize, double *newmean)
+//Wellfords algorithm
+double	online_variance(double *data, size_t datasize, double *newmean)
 {
 	size_t	n = 0;
 	double	mean = 0;
@@ -48,4 +50,10 @@ online_variance(double *data, size_t datasize, double *newmean)
 	if (n < 2)
 		return (0);
 	return (m2 / (n - 1));
+}
+
+//mean_std(&mean, &std, &data[floor], ceiling);
+void	mean_std(double *meanp, double *stdp, double *data, size_t datasize)
+{
+	*stdp = pow(online_variance(data, datasize, meanp), 1/2)
 }
