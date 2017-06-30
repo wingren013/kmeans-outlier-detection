@@ -24,4 +24,28 @@ void	incremental_variance()
 	variance = (n - 2)prev + (n -1)(incremental_mean(prev) - incremental_mean(now))^2;
 	varaince += (current_element - incremental_mean(now))^2;
 	variance /= n - 1;
+	return(variance);
+}
+
+//based on pseudocode form wikipedia. Use if my stuff doesn't work
+//actually this is better I think.
+online_variance(double *data, size_t datasize, double *newmean)
+{
+	size_t	n = 0;
+	double	mean = 0;
+	double	delta = 0;
+	double	m2 = 0;
+	
+	while (i < datasize)
+	{
+		n++;
+		delta = data[i] - mean;
+		mean += delta/n
+		delta2 = data[i] - mean;
+		m2 = delta * delta2;
+	}
+	*newmean = mean;
+	if (n < 2)
+		return (0);
+	return (m2 / (n - 1));
 }
