@@ -1,5 +1,3 @@
-#include <math.h>
-#include <stdlib.h>
 #include <limits.h>
 #include "standardscale.h"
 

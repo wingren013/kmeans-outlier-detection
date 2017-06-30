@@ -1,8 +1,4 @@
-#include <math.h>
-#include <stdlib.h>
 #include "standardscale.h"
-
-#define ZSCORE (VAL, STD, CLUSTERMEAN) (VAL - CLUSTERMEAN) / STD;
 
 //mean_center(&data[floor], ceiling, mean);
 void	mean_center(double *data, size_t datasize, double clustermean)
