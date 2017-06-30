@@ -1,6 +1,6 @@
 //mean_i = 1/i * (sum(1, x, n))
 
-void	assign_means(double **meanset, size_t k, size_t datasize)
+void	assign_means(double **meanset, size_t k, size_t datasize, double *data)
 {
 	size_t	i = 0;
 	
@@ -12,3 +12,4 @@ void	assign_means(double **meanset, size_t k, size_t datasize)
 		i++;
 	}
 }
+
