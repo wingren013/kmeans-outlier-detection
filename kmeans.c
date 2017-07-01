@@ -45,9 +45,11 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 
 void	update_center(size_t cluster, double *data)
 {
+	size_t	i = 0;
+	
 	while (i < centroids[cluster].dimensions)
 	{
-		centroids[cluster].cords[i] = (1/centroids[cluster].points) * (data[i] - centroids[cluster].cords[i])
+		centroids[cluster].cords[i] = (1/centroids[cluster].points) * (data[i] - centroids[cluster].cords[i]);
 		centroids[cluster].cords[i] += centroids[cluster].cords[i];
 		i++;
 	}
@@ -60,7 +62,7 @@ double	aggregate_z(double *data, size_t size, size_t k)
 	double	cdist = 0;
 	
 	acount++;
-	avg_dist = incremental_mean(avg_dist, dist, acount)
+	avg_dist = incremental_mean(avg_dist, dist, acount);
 	while (i < k)
 	{
 		cdist += ABS(centroid_dist(centroids[i]) - dist);
@@ -90,6 +92,8 @@ char	*determine_outlier(double zscore)
 
 void	update(double *data, size_t size, size_t k)
 {
+	size_t	cluster = 0;
+	
 	double	zscore = aggregate_z(data, size, k);
 	char	*outlier = determine_outlier(zscore);
 	cluster = find_closest_mean(data, size, k);
