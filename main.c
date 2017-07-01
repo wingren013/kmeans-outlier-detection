@@ -91,8 +91,8 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 
 int	main(int argc, char **argv)
 {
-	/*if (argc != 3)
-		USAGE;*/
+	if (argc != 3)
+		USAGE;
 	int 	fd = open(argv[1], O_RDONLY);
 	size_t	k = atoi(argv[2]);
 	int		mode = 1;
@@ -101,4 +101,5 @@ int	main(int argc, char **argv)
 	{
 		push_data(fd, &mode, k, get_dimensions(argv[1]));
 	}
+	return (0);
 }
