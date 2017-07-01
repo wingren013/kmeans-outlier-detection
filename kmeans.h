@@ -1,7 +1,7 @@
 #ifndef KMEANS_H
 # define KMEANS_H
 
-#define ABS(X) ((x)<0 ? -(x) : (x))
+#define ABS(X) ((X)<0 ? -(X) : (X))
 
 typedef struct	centroid_s
 {

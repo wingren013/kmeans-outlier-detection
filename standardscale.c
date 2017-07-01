@@ -3,23 +3,12 @@
 
 //mean_i = 1/i * (sum(1, x, n))
 
-//assign_means(&empty, k, &(data[floor]), ceiling)
-void	assign_means(double **meanset, size_t k, double *data, size_t datasize)
+double incremental_mean(double prevmean, double newval, size_t count)
 {
-	size_t	i = 0;
+	double	mean;
 	
-	*meanset = (double*)calloc(k, sizeof(double));
-	
-	while (i < k)
-	{
-		*meanset[i] = data[rand() % datasize];
-		i++;
-	}
-} //this goes somwehere else technically
-
-double incremental_mean(double mean, double, prevmean, double newval, size_t count)
-{
 	mean = prevmean + (newval - prevmean)/count;
+	return (mean);
 }
 
 /*void	incremental_variance()
@@ -31,6 +20,7 @@ double incremental_mean(double mean, double, prevmean, double newval, size_t cou
 }*/
 
 //Wellfords algorithm
+
 double	online_variance(double *data, size_t datasize, double *newmean)
 {
 	size_t	n = 0;

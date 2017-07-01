@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 
+#define USAGE printf("./app inputfile.csv k"); return (0)
+
 double	myparse(char *str)
 {
 	double	ret;
@@ -13,17 +15,29 @@ double	myparse(char *str)
 	return (ret);
 }
 
+size_t	get_dimensions(char *str)
+{
+	while (*str)
+	{
+		if (*str == '_')
+			break ;
+		str++;
+	}
+	return (atoi(str));
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc != 3)
 		USAGE;
 	int 	fd = open(argv[1], O_RDONLY);
 	size_t	k = atoi(argv[2]);
-	size_t	i = 0;
-	char	c;
-	char	*buf = calloc(1, 1);
-	double	*data = calloc(1, sizeof(double));
+	int		mode = 1;
 	
+	while (1)
+	{
+		push_data(fd, &mode, k, get_dmensions(argv[1]));
+	}
 }
 
 void	push_data(int fd, int *mode, size_t k, size_t dimensions)

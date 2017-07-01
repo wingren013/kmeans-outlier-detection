@@ -9,7 +9,7 @@
 //standardscale.c
 
 //computes incremental mean
-double incremental_mean(double mean, double, prevmean, double newval, size_t count);
+double incremental_mean(double prevmean, double newval, size_t count);
 
 //computes incremental variance. Also assigns the appropriate incremental mean to newmean. Use mean_std instead. Returns INT_MIN in case of error
 double	online_variance(double *data, size_t datasize, double *newmean);
