@@ -13,7 +13,10 @@ centroid_t	newcentroid(size_t dimensions)
 	
 	centroid.dimensions = dimensions;
 	centroid.cords = (double*)calloc(dimensions, sizeof(double));
+	//printf("debug %p\n", centroid.cords);
 	centroid.points = 1;
+	
+	return (centroid);
 }
 
 void	assign_means(size_t k, double *data, size_t dimensions)
@@ -30,14 +33,16 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 		centroids[i] = newcentroid(dimensions);
 		i++;
 	}
-	
 	i = 0;
 	while (i < k)
 	{
+					write(1, "t\n", 2);
 		j = 0;
 		while (j < dimensions)
 		{
+						write(1, "v\n", 2);
 			centroids[i].cords[j] = data[x];
+						write(1, "t\n", 2);
 			x++;
 			j++;
 		}
