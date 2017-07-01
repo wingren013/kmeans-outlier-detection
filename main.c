@@ -4,6 +4,7 @@
 #include "kmeans.h"
 #include <stdio.h>
 #include <fcntl.h>
+#include <unistd.h>
 
 #define USAGE printf("./app inputfile.csv k"); return (0)
 
@@ -34,17 +35,18 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 	char	c;
 	char	*buf = calloc(1, 1);
 	double	*data = calloc(1, sizeof(double));
+	size_t	j = 0;
 	
 	while(*mode == 1)
 	{
-		size_t	j = 0;
+		j = 0;
 		while (read(fd, &c, 1))
 		{
 			if (c == ',')
 				break ;
 			buf[j] = c;
 			j++;
-			realloc(buf, j + 1)
+			buf = realloc(buf, j + 1);
 			buf[j] = 0;
 		}
 		data[i] = myparse(buf);
@@ -97,6 +99,6 @@ int	main(int argc, char **argv)
 	
 	while (1)
 	{
-		push_data(fd, &mode, k, get_dmensions(argv[1]));
+		push_data(fd, &mode, k, get_dimensions(argv[1]));
 	}
 }
