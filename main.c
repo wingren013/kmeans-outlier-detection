@@ -76,7 +76,10 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		}
 		data[i] = myparse(buf);
 		if (i % dimensions == 0)
-			update(&data[i - (dimensions - 1)], dimensions);
+		{
+			update(&data[i - (dimensions - 1)], dimensions, k);
+			i = -1;
+		}
 		i++;
 		realloc(data, sizeof(double) * i + 1);
 		free(buf);

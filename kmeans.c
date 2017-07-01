@@ -1,8 +1,14 @@
+#include "kmeans.h"
+
 centroid_t	*centroids;
 
-centroid_t	newcentroid()
+centroid_t	newcentroid(size_t dimensions)
 {
+	centroid_t	centroid;
 	
+	centroid.dimensions = dimensions;
+	centroid.cords = (double*)calloc(dimensions, sizeof(double));
+	centroid.points = 1;
 }
 
 void	assign_means(size_t k, double *data, size_t dimensions)
@@ -12,14 +18,14 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 	size_t	x = 0;
 	
 	centroids = calloc(centroid_t, k);
-	while (i < k - 1)
+	while (i < k)
 	{
-		centroid[i] = newcentroid();
+		centroids[i] = newcentroid(dimensions);
 		i++;
 	}
 	
 	i = 0;
-	while (i < k - 1)
+	while (i < k)
 	{
 		j = 0;
 		while (j < dimensions)
@@ -32,10 +38,21 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 	}
 }
 
-void	update(double *data, size_t size)
+void	update_center(size_t cluster, double *data)
 {
-	zscores[zi] = aggregate_z(data, size);
-	cluster = find_closest_mean(data, size);
-	update_points_in_cluster(cluster);
-	update_center(cluster);
+	while (i < centroids[cluster].dimensions)
+	{
+		centroids[cluster].cords[i] = (1/centroids[cluster].points) * (data[i] - centroids[cluster].cords[i])
+		centroids[cluster].cords[i] += centroids[cluster].cords[i];
+		i++;
+	}
+}
+
+void	update(double *data, size_t size, size_t k)
+{
+	double	zscore = aggregate_z(data, size);
+	cluster = find_closest_mean(data, size, k);
+	centroids[cluster].points += 1;
+	update_center(cluster, data);
+	printf("zscore: %lf, outlier: %s\n", zscore, outlier)
 }
