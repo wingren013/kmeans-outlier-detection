@@ -57,11 +57,12 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			buf = realloc(buf, j + 1);
 			buf[j] = 0;
 		}
+		printf("debug loop1\n");
 		data[i] = myparse(buf);
 		if (i % dimensions == 0)
 			x++;
 		i++;
-		data = realloc(data, sizeof(double) * i + 1);
+		data = realloc(data, sizeof(double) * (i + 1));
 		//online mode check
 		if (x == k)
 			break ;
@@ -74,7 +75,6 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 	}
 	while(*mode == 2)
 	{
-		printf("debug loop1\n");
 		j = 0;
 		while (read(fd, &c, 1))
 		{
@@ -92,7 +92,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			i = -1;
 		}
 		i++;
-		data = realloc(data, sizeof(double) * i + 1);
+		data = realloc(data, sizeof(double) * (i + 1));
 	}
 	printf("debug data\n");
 }
