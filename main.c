@@ -99,8 +99,8 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-		USAGE;
+	//if (argc < 2)
+		//USAGE;
 	int 	fd = open(argv[1], O_RDONLY);
 	size_t	k = atoi(argv[2]);
 	int		mode = 1;

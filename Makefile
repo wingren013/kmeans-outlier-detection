@@ -11,3 +11,4 @@ $(TARGET):
 
 clean:
 	rm -f $(TARGET)
+re: clean $(TARGET)
