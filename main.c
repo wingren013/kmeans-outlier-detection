@@ -74,6 +74,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 	}
 	while(*mode == 2)
 	{
+		printf("debug loop1\n");
 		j = 0;
 		while (read(fd, &c, 1))
 		{
