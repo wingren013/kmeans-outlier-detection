@@ -15,6 +15,7 @@ typedef struct	centroid_s
 
 extern centroid_t	*centroids;
 
+void	assign_means(size_t k, double *data, size_t dimensions);
 void	update(double *data, size_t size, size_t k);
 double	centroid_dist(centroid_t centroid);
 double	find_dist(double *data, size_t size);
