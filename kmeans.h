@@ -2,6 +2,7 @@
 # define KMEANS_H
 
 #include <stdlib.h>
+#include <math.h>
 
 #define ABS(X) ((X)<0 ? -(X) : (X))
 
@@ -10,7 +11,7 @@ typedef struct	centroid_s
 	double	*cords;
 	size_t	points;
 	size_t	dimensions;
-}				centorid_t;
+}				centroid_t;
 
 extern centroid_t	*centroids;
 

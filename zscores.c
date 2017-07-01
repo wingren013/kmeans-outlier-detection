@@ -5,7 +5,7 @@ void	mean_center(double *data, size_t datasize, double clustermean)
 {
 	size_t	i = 0;
 	
-	while (i < data_size)
+	while (i < datasize)
 	{
 		data[i] = data[i] - clustermean;
 		i++;

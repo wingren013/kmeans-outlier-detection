@@ -33,7 +33,7 @@ double	online_variance(double *data, size_t datasize, double *newmean)
 	{
 		n++;
 		delta = data[n] - mean;
-		mean += delta/n
+		mean += delta/n;
 		delta2 = data[n] - mean;
 		m2 += delta * delta2;
 	}
@@ -46,5 +46,5 @@ double	online_variance(double *data, size_t datasize, double *newmean)
 //mean_std(&mean, &std, &data[floor], ceiling);
 void	mean_std(double *meanp, double *stdp, double *data, size_t datasize)
 {
-	*stdp = pow(online_variance(data, datasize, meanp), 1/2)
+	*stdp = pow(online_variance(data, datasize, meanp), 1/2);
 }

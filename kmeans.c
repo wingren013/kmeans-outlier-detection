@@ -22,7 +22,7 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 	
 	acount = 0;
 	avg_dist = 0;
-	centroids = calloc(centroid_t, k);
+	centroids = calloc(k, sizeof(centroid_t));
 	while (i < k)
 	{
 		centroids[i] = newcentroid(dimensions);

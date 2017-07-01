@@ -64,7 +64,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		if (i % dimensions == 0)
 			x++;
 		i++;
-		realloc(data, sizeof(double) * i + 1);
+		data = realloc(data, sizeof(double) * i + 1);
 		free(buf);
 		//online mode check
 		if (x == k)
@@ -85,7 +85,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 				break ;
 			buf[j] = c;
 			j++;
-			realloc(buf, j + 1)
+			buf = realloc(buf, j + 1)
 			buf[j] = 0;
 		}
 		data[i] = myparse(buf);
