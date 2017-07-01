@@ -8,6 +8,7 @@ double	find_dist(double *data, size_t size)
 	while (i < size)
 	{
 		ret += data[i] * data[i]; // (a_1 - a_2)^2 = a_1^2 when a_2 is 0
+		i++;
 	}
 	return (pow(ret, 1/2));
 }

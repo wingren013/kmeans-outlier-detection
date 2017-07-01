@@ -35,13 +35,10 @@ void	assign_means(size_t k, double *data, size_t dimensions)
 	i = 0;
 	while (i < k)
 	{
-					write(1, "t\n", 2);
 		j = 0;
 		while (j < dimensions)
 		{
-						write(1, "v\n", 2);
 			centroids[i].cords[j] = data[x];
-						write(1, "t\n", 2);
 			x++;
 			j++;
 		}
@@ -102,7 +99,6 @@ void	update(double *data, size_t size, size_t k)
 	size_t	cluster = 0;
 	
 	double	zscore = aggregate_z(data, size, k);
-	
 	cluster = find_closest_mean(data, size, k);
 	centroids[cluster].points += 1;
 	update_center(cluster, data);
