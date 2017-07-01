@@ -9,6 +9,9 @@ all: $(TARGET)
 $(TARGET):
 	gcc $(KMEANS) $(STANDARDSCALE) main.c -o $(TARGET)
 
+debug: clean
+	gcc $(KMEANS) $(STANDARDSCALE) main.c -o $(TARGET) -fsanitize=address
+
 clean:
 	rm -f $(TARGET)
 re: clean $(TARGET)

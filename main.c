@@ -62,7 +62,6 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			x++;
 		i++;
 		data = realloc(data, sizeof(double) * i + 1);
-		free(buf);
 		//online mode check
 		if (x == k)
 			break ;
@@ -93,7 +92,6 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		}
 		i++;
 		data = realloc(data, sizeof(double) * i + 1);
-		free(buf);
 	}
 }
 
