@@ -96,9 +96,9 @@ void	update(double *data, size_t size, size_t k)
 	size_t	cluster = 0;
 	
 	double	zscore = aggregate_z(data, size, k);
-	char	*outlier = determine_outlier(zscore);
+	
 	cluster = find_closest_mean(data, size, k);
 	centroids[cluster].points += 1;
 	update_center(cluster, data);
-	printf("zscore: %lf, outlier: %s\n", zscore, outlier)
+	printf("zscore: %lf, outlier: %s\n", zscore, determine_outlier(zscore));
 }
