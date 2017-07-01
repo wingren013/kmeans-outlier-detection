@@ -48,7 +48,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 	while(*mode == 1)
 	{
 		j = 0;
-		while (read(fd, &c, 1))
+		while (read(fd, &c, 1) == 1)
 		{
 			if (c == ',')
 				break ;
@@ -57,7 +57,6 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			buf = realloc(buf, j + 1);
 			buf[j] = 0;
 		}
-		printf("debug loop1\n");
 		data[i] = myparse(buf);
 		if (i % dimensions == 0)
 			x++;
@@ -70,7 +69,9 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 	if (*mode == 1)
 	{
 		*mode = 2;
+			write(1, "d\n", 2);
 		assign_means(k, data, dimensions);
+			write(1, "d\n", 2);
 		return ;
 	}
 	while(*mode == 2)
