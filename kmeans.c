@@ -1,5 +1,6 @@
 #include "kmeans.h"
 #include "standardscale.h"
+#include <stdio.h>
 
 centroid_t	*centroids;
 double		avg_dist;

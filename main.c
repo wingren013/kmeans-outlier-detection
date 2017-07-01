@@ -11,7 +11,7 @@ double	myparse(char *str)
 {
 	double	ret;
 	
-	sscanf(str, "%lf", &d);
+	sscanf(str, "%lf", &ret);
 	return (ret);
 }
 
@@ -26,19 +26,6 @@ size_t	get_dimensions(char *str)
 	return (atoi(str));
 }
 
-int	main(int argc, char **argv)
-{
-	if (argc != 3)
-		USAGE;
-	int 	fd = open(argv[1], O_RDONLY);
-	size_t	k = atoi(argv[2]);
-	int		mode = 1;
-	
-	while (1)
-	{
-		push_data(fd, &mode, k, get_dmensions(argv[1]));
-	}
-}
 
 void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 {
@@ -97,5 +84,19 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		i++;
 		realloc(data, sizeof(double) * i + 1);
 		free(buf);
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc != 3)
+		USAGE;
+	int 	fd = open(argv[1], O_RDONLY);
+	size_t	k = atoi(argv[2]);
+	int		mode = 1;
+	
+	while (1)
+	{
+		push_data(fd, &mode, k, get_dmensions(argv[1]));
 	}
 }
