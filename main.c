@@ -74,7 +74,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 				break ;
 			buf[j] = c;
 			j++;
-			buf = realloc(buf, j + 1)
+			buf = realloc(buf, j + 1);
 			buf[j] = 0;
 		}
 		data[i] = myparse(buf);
@@ -84,15 +84,15 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			i = -1;
 		}
 		i++;
-		realloc(data, sizeof(double) * i + 1);
+		data = realloc(data, sizeof(double) * i + 1);
 		free(buf);
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-		USAGE;
+	/*if (argc != 3)
+		USAGE;*/
 	int 	fd = open(argv[1], O_RDONLY);
 	size_t	k = atoi(argv[2]);
 	int		mode = 1;
