@@ -24,6 +24,14 @@ size_t	get_dimensions(char *str)
 			break ;
 		str++;
 	}
+	*str++;
+	while (*str)
+	{
+		if (*str == '_')
+			break ;
+		str++;
+	}
+	*str++;
 	return (atoi(str));
 }
 

@@ -1,5 +1,6 @@
 #include "kmeans.h"
 #include "standardscale.h"
+#include <math.h>
 #include <stdio.h>
 
 centroid_t	*centroids;
@@ -75,7 +76,8 @@ double	aggregate_z(double *data, size_t size, size_t k)
 	double	std = 0;
 	while (i < k)
 	{
-		std += pow(ABS(centroid_dist(centroids[i]) - dist) - cdist, 2);
+		//I don't knwo why it was giving me an undefine reference to pow but heres a wuick solution
+		std += (ABS(centroid_dist(centroids[i]) - dist) - cdist) * (ABS(centroid_dist(centroids[i]) - dist) - cdist);
 		i++;
 	}
 	std = std / k;

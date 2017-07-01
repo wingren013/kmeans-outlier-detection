@@ -2,12 +2,12 @@ TARGET = outliers
 
 KMEANS = kmeans.c distances.c
 STANDARDSCALE = standardscale.c zscores.c
-.PHONY: all $(TARGET) clean
+.PHONY: all clean
 
 all: $(TARGET)
 
-$TARGET:
-	gcc $(KMEANS) $(STANDARDSCALE) -o $(TARGET)
+$(TARGET):
+	gcc $(KMEANS) $(STANDARDSCALE) main.c -o $(TARGET)
 
 clean:
 	rm -f $(TARGET)
