@@ -13,7 +13,6 @@ centroid_t	newcentroid(size_t dimensions)
 	
 	centroid.dimensions = dimensions;
 	centroid.cords = (double*)calloc(dimensions, sizeof(double));
-	//printf("debug %p\n", centroid.cords);
 	centroid.points = 1;
 	
 	return (centroid);

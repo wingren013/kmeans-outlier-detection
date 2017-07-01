@@ -71,7 +71,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		*mode = 2;
 			write(1, "d\n", 2);
 		assign_means(k, data, dimensions);
-			write(1, "d\n", 2);
+			write(1, "o\n", 2);
 		return ;
 	}
 	while(*mode == 2)
@@ -87,8 +87,10 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 			buf[j] = 0;
 		}
 		data[i] = myparse(buf);
-		if (i % dimensions == 0)
+		printf("i: %ld %ld\n", i, dimensions);
+		if (i % dimensions == 0 && i != 0)
 		{
+			printf("Wi: %ld\n", i);
 			update(&data[i - (dimensions - 1)], dimensions, k);
 			i = -1;
 		}
