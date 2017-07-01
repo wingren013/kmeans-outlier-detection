@@ -93,6 +93,7 @@ void	push_data(int fd, int *mode, size_t k, size_t dimensions)
 		i++;
 		data = realloc(data, sizeof(double) * i + 1);
 	}
+	printf("debug data\n");
 }
 
 int	main(int argc, char **argv)
